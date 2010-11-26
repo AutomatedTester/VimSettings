@@ -14,7 +14,7 @@ set softtabstop=4
 set shiftwidth=4        " number of spaces to use for auto indent
 set autoindent          " copy indent from current line when starting a new line
 
-" make backspaces more powerfull
+" make backspaces more powerful
 set backspace=indent,eol,start
 
 set ruler                           " show line and column number
