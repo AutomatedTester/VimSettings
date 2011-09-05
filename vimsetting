@@ -4,6 +4,11 @@ au BufRead,BufNewFile *.c set noexpandtab
 au BufRead,BufNewFile *.h set noexpandtab
 au BufRead,BufNewFile Makefile* set noexpandtab
 
+autocmd BufRead *.py set makeprg=python\ -c\ \"import\ py_compile,sys;\ sys.stderr=sys.stdout;\ py_compile.compile(r'%')\"
+autocmd BufRead *.py set efm=%C\ %.%#,%A\ \ File\ \"%f\"\\,\ line\ %l%.%#,%Z%[%^\ ]%\\@=%m
+autocmd BufRead *.py nmap <F5> :!python %<CR>
+
+" autocmd BufWritePost * if getline(1) =~ "^#!" | silent !chmod +x <afile> | endif
 " --------------------------------------------------------------------------------
 " configure editor with tabs and nice stuff...
 " --------------------------------------------------------------------------------
@@ -14,7 +19,7 @@ set softtabstop=4
 set shiftwidth=4        " number of spaces to use for auto indent
 set autoindent          " copy indent from current line when starting a new line
 
-" make backspaces more powerful
+" make backspaces more powerfull
 set backspace=indent,eol,start
 
 set ruler                           " show line and column number
@@ -22,3 +27,27 @@ syntax on                       " syntax highlighting
 set showcmd                     " show (partial) command in status line
 set number
 colorscheme darkblue 
+
+"Incremental search
+set incsearch
+
+
+filetype on            " enables filetype detection
+filetype plugin on     " enables filetype specific plugins
+
+" HTML (tab width 2 chr, no wrapping)
+autocmd FileType html set sw=2
+autocmd FileType html set ts=2
+autocmd FileType html set sts=2
+autocmd FileType html set textwidth=0
+
+" js (tab width 2 chr, no wrapping)
+autocmd FileType html set sw=2
+autocmd FileType html set ts=2
+autocmd FileType html set sts=2
+
+" CSS (tab width 2 chr, wrap at 79th char)
+autocmd FileType css set sw=2
+autocmd FileType css set ts=2
+autocmd FileType css set sts=2
+
